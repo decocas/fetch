@@ -8,62 +8,43 @@
 </head>
 <body>
 
-    <textarea name="text" id="tx" cols="0" rows="1">
-               </textarea>
-               <table class="table">
-                <thead>
-                  <tr>
-                    <th scope="col">Mercancia</th>
-                    <th scope="col">Entrada</th>
-                    <th scope="col">Salida</th>
-                    <th scope="col">Id</th>
-                    <th scope="col">Nombre</th>
-                    <th scope="col">@Mail</th>
-                    <th scope="col">Nit</th>
-                    <th scope="col">Telefono</th>
-                    <th scope="col">Responsable</th>
-                    
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <th scope="row"></th>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                  </tr>
-                  
-                </tbody>
-              </table>
-              
+    <textarea name="text" id="tx" cols="10" rows="10">
+               
+    </textarea>
+      <ul>
+        <li>
+
+        </li>
+      </ul>        
               
     <script>
-        cliente={merancia:String,
-                  entrada:String,
-                  salida:String,
-                  id:String,
-                  nombre:String,
-                  mail:String,
-                  nit:String,
-                  telefono:String,
-                  merancia:String             
+        cliente={ nombre:'cashopo',
+                  mail:'qqwqe',
+                  nit:'132aaa34',
+                  telefono:'25',
+                  responsable:'el antojo'             
         };
         fetch('http://localhost:3000/api/rest/sglam')
   .then(function(response) {
     return response.json();
   })
   .then(function(myJson) {
+     
     console.log(myJson);
+    //cliente=myJson;
+      var a=document.getElementsByTagName('li');
+      a[0].childNodes[0].nodeValue=JSON.stringify(myJson);
+           
 
-    var a=document.getElementsByTagName('table');
-       a[0].innerText= JSON.stringify(myJson);
-       
+      //console.log(cliente);
     });
+    /*fetch('http://localhost:3000/api/rest/sglam',{
+      method:'POST',
+      body:JSON.stringify(cliente),
+      headers:{'Content-type':'application/json'}
+    }).then(res=>res.json())
+    .catch(err=> console.log(err))
+    .then(res=> console.log(res));*/
     //https://developer.mozilla.org/es/docs/Web/API/Fetch_API/Utilizando_Fetch
     </script>
    
