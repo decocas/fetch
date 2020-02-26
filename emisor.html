@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <title>emisor</title>
+</head>
+<body>
+
+    <textarea name="text" id="tx" cols="0" rows="1">
+               </textarea>
+               <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Mercancia</th>
+                    <th scope="col">Entrada</th>
+                    <th scope="col">Salida</th>
+                    <th scope="col">Id</th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">@Mail</th>
+                    <th scope="col">Nit</th>
+                    <th scope="col">Telefono</th>
+                    <th scope="col">Responsable</th>
+                    
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row"></th>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                  </tr>
+                  
+                </tbody>
+              </table>
+              
+              
+    <script>
+        cliente={merancia:String,
+                  entrada:String,
+                  salida:String,
+                  id:String,
+                  nombre:String,
+                  mail:String,
+                  nit:String,
+                  telefono:String,
+                  merancia:String             
+        };
+        fetch('http://localhost:3000/api/rest/sglam')
+  .then(function(response) {
+    return response.json();
+  })
+  .then(function(myJson) {
+    console.log(myJson);
+
+    var a=document.getElementsByTagName('table');
+       a[0].innerText= JSON.stringify(myJson);
+       
+    });
+    //https://developer.mozilla.org/es/docs/Web/API/Fetch_API/Utilizando_Fetch
+    </script>
+   
+    <div>
+        <button id="enviar" type="submit">
+            enviar
+        </button>
+    </div><!--
+<script> 
+        const http=window.open("http://localhost/receptor.html", "_blank");
+        let btn=document.getElementById("enviar");
+        let tx=document.getElementById("tx");
+        function send(msj){
+            if(!msj || !msj.length){
+                return http.postMessage(JSON.stringify({
+                    message:mj,
+                    time: Date()
+                }), 'http://localhost/receptor.html'); 
+            }
+        }  
+        
+        btn.addEventListener("click", function(){
+            send(tx.value);
+            tx.value="";
+        }) 
+</script>
+
+    -->
+
+
+
+</body>
+</html>
